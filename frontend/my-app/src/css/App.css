@@ -1,0 +1,44 @@
+/* Navbar styles */
+.navbar {
+    background-color: #333;
+    padding: 1em;
+    color: white;
+    text-align: center;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .navbar ul li {
+    display: inline;
+    margin: 0 1em;
+  }
+  
+  .navbar ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* Main page styles */
+  .main-page {
+    padding: 2em;
+    text-align: center;
+  }
+  
+  .shark-fish, .total-rake, .game-list {
+    margin: 1em 0;
+  }
+  
+  .game-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .game-item {
+    border: 1px solid #ddd;
+    padding: 1em;
+    margin-bottom: 1em;
+  }
+  
