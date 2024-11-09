@@ -2,6 +2,7 @@ package com.example.poker_traker.poker_traker.Web;
 
 
 import com.example.poker_traker.poker_traker.Entity.Game;
+import com.example.poker_traker.poker_traker.Entity.GameSummaryDTO;
 import com.example.poker_traker.poker_traker.Service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,10 +28,13 @@ public class MainPageController {
 
     // Endpoint to get paginated game summaries
     @GetMapping("/games")
-    public ResponseEntity<Page<Game>> getGameSummaries(@RequestParam(defaultValue = "0") int page,
-                                                       @RequestParam(defaultValue = "10") int size) {
+    public ResponseEntity<Page<GameSummaryDTO>> getGameSummaries(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
         Pageable pageable = PageRequest.of(page, size);
-        Page<Game> games = gameService.getAllGames(pageable);
+        Page<GameSummaryDTO> games = gameService.getAllGameSummaries(pageable);
+
         return ResponseEntity.ok(games);
     }
 
@@ -42,6 +46,7 @@ public class MainPageController {
         List<Object[]> sharkOfMonth = gameService.getTopSharkForMonth(date);
         List<Object[]> fishOfMonth = gameService.getTopFishForMonth(date);
         Integer totalRakeForMonth = gameService.getTotalRakeForMonth(date);
+
 
         Map<String, Object> response = Map.of(
                 "sharkOfMonth", sharkOfMonth.isEmpty() ? null : sharkOfMonth.get(0),

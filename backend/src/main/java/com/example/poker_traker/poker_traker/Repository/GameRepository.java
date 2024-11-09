@@ -13,8 +13,8 @@ import java.util.List;
 
 public interface GameRepository extends JpaRepository<Game, Long> {
 
-    // Pagination for game summaries
-    Page<Game> findAll(Pageable pageable);
+//    // Pagination for game summaries
+//    Page<Game> findAll(Pageable pageable);
 
     // Total rake for the specified month
     @Query("SELECT SUM(g.totalRake) FROM Game g WHERE MONTH(g.gameDate) = MONTH(:date) AND YEAR(g.gameDate) = YEAR(:date)")
@@ -31,4 +31,14 @@ public interface GameRepository extends JpaRepository<Game, Long> {
             "JOIN gp.game g WHERE MONTH(g.gameDate) = MONTH(:date) AND YEAR(g.gameDate) = YEAR(:date) " +
             "GROUP BY gp.user.id ORDER BY totalLoss ASC")
     List<Object[]> findTopFishForMonth(@Param("date") LocalDateTime date);
+
+    // All-time leaderboard - Top profit (Shark)
+    @Query("SELECT gp.user.username, SUM(gp.profitLoss) AS totalProfit FROM Game_Player gp " +
+            "GROUP BY gp.user.id ORDER BY totalProfit DESC")
+    List<Object[]> findTopAllTimeShark();
+
+    // All-time leaderboard - Top loss (Fish)
+    @Query("SELECT gp.user.username, SUM(gp.profitLoss) AS totalLoss FROM Game_Player gp " +
+            "GROUP BY gp.user.id ORDER BY totalLoss ASC")
+    List<Object[]> findTopAllTimeFish();
 }

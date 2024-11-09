@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function GameList({ games }) {
   return (
@@ -11,6 +12,7 @@ function GameList({ games }) {
             <p>Total Rake: {game.totalRake}</p>
             <p>Shark: {game.shark.username}</p>
             <p>Fish: {game.fish.username}</p>
+            <Link to={`/games/${game.id}`}>View Details</Link>
           </li>
         ))}
       </ul>
