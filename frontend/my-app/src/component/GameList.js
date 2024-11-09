@@ -10,8 +10,8 @@ function GameList({ games }) {
           <li key={game.id} className="game-item">
             <p>Date: {new Date(game.gameDate).toLocaleString()}</p>
             <p>Total Rake: {game.totalRake}</p>
-            <p>Shark: {game.shark.username}</p>
-            <p>Fish: {game.fish.username}</p>
+            <p>Shark: {game.sharkUsername}</p>
+            <p>Fish: {game.fishUsername}</p>
             <Link to={`/games/${game.id}`}>View Details</Link>
           </li>
         ))}

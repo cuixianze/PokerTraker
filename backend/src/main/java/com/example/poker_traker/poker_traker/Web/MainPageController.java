@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,13 +48,12 @@ public class MainPageController {
         List<Object[]> fishOfMonth = gameService.getTopFishForMonth(date);
         Integer totalRakeForMonth = gameService.getTotalRakeForMonth(date);
 
-
-        Map<String, Object> response = Map.of(
-                "sharkOfMonth", sharkOfMonth.isEmpty() ? null : sharkOfMonth.get(0),
-                "fishOfMonth", fishOfMonth.isEmpty() ? null : fishOfMonth.get(0),
-                "totalRakeForMonth", totalRakeForMonth
-        );
+        Map<String, Object> response = new HashMap<>();
+        response.put("sharkOfMonth", sharkOfMonth.isEmpty() ? "No Data" : sharkOfMonth.get(0));
+        response.put("fishOfMonth", fishOfMonth.isEmpty() ? "No Data" : fishOfMonth.get(0));
+        response.put("totalRakeForMonth", totalRakeForMonth != null ? totalRakeForMonth : 0);
 
         return ResponseEntity.ok(response);
     }
+
 }
