@@ -75,15 +75,29 @@ public class CreateController {
         for (GameCreationDTO.PlayerPnL playerData : request.getPlayers()) {
             User user = userService.getUserByUsername(playerData.getUsername())
                     .orElseThrow(() -> new RuntimeException("User " + playerData.getUsername() + " not found"));
+
+            // Update the user's PnL
             user.setTotalPnL(user.getTotalPnL() + playerData.getProfitLoss());
+
+            // Increment winning or losing games based on profit/loss
+            if (playerData.getProfitLoss() >= 0) {
+                user.setWinningGames(user.getWinningGames() + 1);
+            } else {
+                user.setLosingGames(user.getLosingGames() + 1);
+            }
+
+            // Create and save Game_Player entry
             Game_Player gamePlayer = new Game_Player();
             gamePlayer.setUser(user);
             gamePlayer.setGame(savedGame);
             gamePlayer.setProfitLoss(playerData.getProfitLoss());
-
             gamePlayers.add(gamePlayerService.createGamePlayer(gamePlayer));
+
+            // Save updated user
+            userService.updateUser(user);
         }
 
         return ResponseEntity.ok("Game and players created successfully with Game ID: " + savedGame.getId());
     }
+
 }

@@ -1,6 +1,6 @@
 package com.example.poker_traker.poker_traker.Service;
 
-
+import com.example.poker_traker.poker_traker.Entity.LeaderboardDTO;
 import com.example.poker_traker.poker_traker.Entity.Game;
 import com.example.poker_traker.poker_traker.Entity.GameSummaryDTO;
 import com.example.poker_traker.poker_traker.Repository.GameRepository;
@@ -52,17 +52,71 @@ public class GameService {
         return gameRepository.findTotalRakeForMonth(date);
     }
 
-    public List<Object[]> getTopSharkForMonth(LocalDateTime date) {
-        return gameRepository.findTopSharkForMonth(date);
+    public List<LeaderboardDTO> getTopSharkForMonth(LocalDateTime date) {
+        return gameRepository.findTopSharkForMonth(date).stream()
+                .map(data -> new LeaderboardDTO(
+                        (String) data[0],
+                        ((Number) data[1]).intValue(),
+                        ((Number) data[3]).doubleValue(),
+                        ((Number) data[2]).intValue()
+                ))
+                .collect(Collectors.toList());
     }
 
-    public List<Object[]> getTopFishForMonth(LocalDateTime date) {
-        return gameRepository.findTopFishForMonth(date);
+    public List<LeaderboardDTO> getTopFishForMonth(LocalDateTime date) {
+        return gameRepository.findTopFishForMonth(date).stream()
+                .map(data -> new LeaderboardDTO(
+                        (String) data[0],
+                        ((Number) data[1]).intValue(),
+                        ((Number) data[3]).doubleValue(),
+                        ((Number) data[2]).intValue()
+                ))
+                .collect(Collectors.toList());
     }
 
-    public List<Object[]> getTopAllTimeShark() { return gameRepository.findTopAllTimeShark(); }
+    public List<LeaderboardDTO> getTopAllTimeShark() {
+        return gameRepository.findTopAllTimeShark().stream()
+                .map(data -> new LeaderboardDTO(
+                        (String) data[0],
+                        ((Number) data[1]).intValue(),
+                        ((Number) data[3]).doubleValue(),
+                        ((Number) data[2]).intValue()
+                ))
+                .collect(Collectors.toList());
+    }
 
-    public List<Object[]> getTopAllTimeFish() { return gameRepository.findTopAllTimeFish(); }
+    public List<LeaderboardDTO> getTopAllTimeFish() {
+        return gameRepository.findTopAllTimeFish().stream()
+                .map(data -> new LeaderboardDTO(
+                        (String) data[0],
+                        ((Number) data[1]).intValue(),
+                        ((Number) data[3]).doubleValue(),
+                        ((Number) data[2]).intValue()
+                ))
+                .collect(Collectors.toList());
+    }
+
+    public List<LeaderboardDTO> getTopAllTimeWinRate() {
+        return gameRepository.findTopAllTimeWinRate().stream()
+                .map(data -> new LeaderboardDTO(
+                        (String) data[0],
+                        ((Number) data[1]).intValue(),
+                        ((Number) data[3]).doubleValue(),
+                        ((Number) data[2]).intValue()
+                ))
+                .collect(Collectors.toList());
+    }
+
+    public List<LeaderboardDTO> getTopWinRateForMonth(LocalDateTime date) {
+        return gameRepository.findTopWinRateForMonth(date).stream()
+                .map(data -> new LeaderboardDTO(
+                        (String) data[0],
+                        ((Number) data[1]).intValue(),
+                        ((Number) data[3]).doubleValue(),
+                        ((Number) data[2]).intValue()
+                ))
+                .collect(Collectors.toList());
+    }
 
     public Optional<Game> getGameById(Long id) {
         return gameRepository.findById(id);

@@ -6,6 +6,7 @@ import GameDetail from './pages/GameDetail';
 import Leaderboard from './pages/Leaderboard';
 import GameCreationForm from './pages/GameCreationForm';
 import UserForm from './pages/UserForm';
+import UserDetailPage from './pages/UserDetail';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/create-game" element={<GameCreationForm />} />
           <Route path="/create-user" element={<UserForm />} />
+          <Route path="/user/:username" element={<UserDetailPage />} />
         </Routes>
       </div>
     </Router>
