@@ -39,11 +39,23 @@
   width: 70%;
   height: 80%;
 }
-.navBar_menu {
+.navBar_menu,
+.navBar_menu_b {
   text-decoration: none;
   font-size: 20px;
   font-weight: bold;
   color: white;
+}
+.navBar_menu_b {
+  height: 30px;
+  width: 150px;
+}
+.navBar_menu_li {
+  text-align: center;
+  height: 30px;
+  width: 150px;
+  background-color: #b59a13;
+  border-radius: 10px;
 }
 .navBar_space {
   width: 15%;

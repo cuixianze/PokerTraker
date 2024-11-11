@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Navbar from "../component/Navbar";
 
 function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState([]);
-  const [sortType, setSortType] = useState('profit'); // Default sort by profit
-  const [timeRange, setTimeRange] = useState('all-time'); // Default to all-time
+  const [sortType, setSortType] = useState("profit"); // Default sort by profit
+  const [timeRange, setTimeRange] = useState("all-time"); // Default to all-time
   const [error, setError] = useState(null);
 
   // Get the current month in YYYY-MM format
@@ -14,24 +15,26 @@ function Leaderboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let url = '';
+        let url = "";
 
         // Determine URL based on selected time range and sort type
-        if (timeRange === 'all-time') {
-          url = sortType === 'profit'
-            ? 'http://localhost:8080/leaderboard/all-time/shark'
-            : 'http://localhost:8080/leaderboard/all-time/fish';
+        if (timeRange === "all-time") {
+          url =
+            sortType === "profit"
+              ? "http://localhost:8080/leaderboard/all-time/shark"
+              : "http://localhost:8080/leaderboard/all-time/fish";
         } else {
-          url = sortType === 'profit'
-            ? `http://localhost:8080/leaderboard/monthly/shark?month=${currentMonth}`
-            : `http://localhost:8080/leaderboard/monthly/fish?month=${currentMonth}`;
+          url =
+            sortType === "profit"
+              ? `http://localhost:8080/leaderboard/monthly/shark?month=${currentMonth}`
+              : `http://localhost:8080/leaderboard/monthly/fish?month=${currentMonth}`;
         }
 
         const response = await axios.get(url);
         setLeaderboardData(response.data);
         setError(null);
       } catch (err) {
-        setError('Failed to fetch leaderboard data. Please try again.');
+        setError("Failed to fetch leaderboard data. Please try again.");
       }
     };
 
@@ -39,7 +42,8 @@ function Leaderboard() {
   }, [timeRange, sortType, currentMonth]);
 
   return (
-    <div className="leaderboard">
+    <div className="common">
+      <Navbar />
       <h2>User Leaderboard</h2>
 
       <div className="controls">
@@ -58,14 +62,14 @@ function Leaderboard() {
         {/* Sorting Options */}
         <div className="sort-options">
           <button
-            onClick={() => setSortType('profit')}
-            className={sortType === 'profit' ? 'active' : ''}
+            onClick={() => setSortType("profit")}
+            className={sortType === "profit" ? "active" : ""}
           >
             Sort by Profit
           </button>
           <button
-            onClick={() => setSortType('loss')}
-            className={sortType === 'loss' ? 'active' : ''}
+            onClick={() => setSortType("loss")}
+            className={sortType === "loss" ? "active" : ""}
           >
             Sort by Loss
           </button>
@@ -80,7 +84,7 @@ function Leaderboard() {
         <thead>
           <tr>
             <th>Username</th>
-            <th>{sortType === 'profit' ? 'Total Profit' : 'Total Loss'}</th>
+            <th>{sortType === "profit" ? "Total Profit" : "Total Loss"}</th>
           </tr>
         </thead>
         <tbody>

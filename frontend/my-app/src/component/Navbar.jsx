@@ -36,13 +36,13 @@ function Navbar() {
               User Leaderboard
             </Link>
           </li>
-          <li>
-            <Link to="/create-user" className="navBar_menu">
+          <li className="navBar_menu_li">
+            <Link to="/create-user" className="navBar_menu_b">
               Create User
             </Link>
           </li>
-          <li>
-            <Link to="/create-game" className="navBar_menu">
+          <li className="navBar_menu_li">
+            <Link to="/create-game" className="navBar_menu_b">
               Create Game
             </Link>
           </li>
