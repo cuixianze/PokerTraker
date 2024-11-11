@@ -1,0 +1,18 @@
+.gameList {
+  height: 68vh;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.gameList_title {
+  text-align: center;
+}
+.gameList_h3,
+.gameList_th,
+.gameList_th {
+  color: white;
+  font-weight: 100;
+}
+.gameList_tr {
+  background-color: #313131;
+}
