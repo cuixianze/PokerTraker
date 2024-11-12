@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../component/Navbar";
+import "../css/leaderBoard.css";
 
 function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState([]);
@@ -44,7 +45,6 @@ function Leaderboard() {
   return (
     <div className="common">
       <Navbar />
-      <h2>User Leaderboard</h2>
 
       <div className="controls">
         {/* Time Range Selection */}

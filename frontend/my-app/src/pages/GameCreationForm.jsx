@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import iphone2 from "../images/iphone2.png";
 import axios from "axios";
 import Navbar from "../component/Navbar";
+import Copyright from "../component/copyright";
 
 function GameCreationForm() {
   const [totalRake, setTotalRake] = useState(""); // Start with an empty string
@@ -45,49 +47,66 @@ function GameCreationForm() {
   return (
     <div className="common">
       <Navbar />
-      <h2>Create New Game</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Total Rake:</label>
-          <input
-            type="number"
-            value={totalRake}
-            onChange={(e) => setTotalRake(e.target.value)} // No conversion until submit
-            required
-          />
-        </div>
-
-        <h3>Players</h3>
-        {players.map((player, index) => (
-          <div key={index} className="player-input">
-            <label>Username:</label>
-            <input
-              type="text"
-              value={player.username}
-              onChange={(e) =>
-                handlePlayerChange(index, "username", e.target.value)
-              }
-              required
-            />
-            <label>Profit/Loss:</label>
-            <input
-              type="number"
-              value={player.profitLoss}
-              onChange={(e) =>
-                handlePlayerChange(index, "profitLoss", e.target.value)
-              } // No conversion until submit
-              required
-            />
+      <div className="create_game_container">
+        <div className="create_game_box">
+          <div className="create_game_title">
+            <h2 className="create_game_box_h2">Create New Game</h2>
+            <button
+              type="button"
+              onClick={handleAddPlayer}
+              className="create_game_playerBtn"
+            >
+              Add Player
+            </button>
           </div>
-        ))}
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label className="create_game_box_label">Total Rake:</label>
+              <input
+                className="player-input"
+                type="number"
+                value={totalRake}
+                onChange={(e) => setTotalRake(e.target.value)} // No conversion until submit
+                required
+              />
+            </div>
+            <div className="create_game_box_players">
+              <h3 className="create_game_box_h2">Players</h3>
+              {players.map((player, index) => (
+                <div key={index}>
+                  <label className="create_game_box_label">Username:</label>
+                  <input
+                    className="player-input"
+                    type="text"
+                    value={player.username}
+                    onChange={(e) =>
+                      handlePlayerChange(index, "username", e.target.value)
+                    }
+                    required
+                  />
+                  <label className="create_game_box_label">Profit/Loss:</label>
+                  <input
+                    className="player-input"
+                    type="number"
+                    value={player.profitLoss}
+                    onChange={(e) =>
+                      handlePlayerChange(index, "profitLoss", e.target.value)
+                    } // No conversion until submit
+                    required
+                  />
+                </div>
+              ))}
+            </div>
+            <button type="submit" className="create_game_addBtn">
+              Add Current Session
+            </button>
+          </form>
 
-        <button type="button" onClick={handleAddPlayer}>
-          Add Player
-        </button>
-        <button type="submit">Create Game</button>
-      </form>
-
-      {responseMessage && <p>{responseMessage}</p>}
+          {responseMessage && <p>{responseMessage}</p>}
+        </div>
+        <div className="game_create_promotionBox"></div>
+      </div>
+      <Copyright />
     </div>
   );
 }
