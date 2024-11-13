@@ -3,6 +3,7 @@ package com.example.poker_traker.poker_traker.Web;
 
 import com.example.poker_traker.poker_traker.Entity.Game;
 import com.example.poker_traker.poker_traker.Entity.GameSummaryDTO;
+import com.example.poker_traker.poker_traker.Entity.LeaderboardDTO;
 import com.example.poker_traker.poker_traker.Service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -44,8 +45,8 @@ public class MainPageController {
     public ResponseEntity<Map<String, Object>> getMonthlyStatistics(@RequestParam String month) {
         LocalDateTime date = LocalDateTime.parse(month + "-01T00:00:00");
 
-        List<Object[]> sharkOfMonth = gameService.getTopSharkForMonth(date);
-        List<Object[]> fishOfMonth = gameService.getTopFishForMonth(date);
+        List<LeaderboardDTO> sharkOfMonth = gameService.getTopSharkForMonth(date);
+        List<LeaderboardDTO> fishOfMonth = gameService.getTopFishForMonth(date);
         Integer totalRakeForMonth = gameService.getTotalRakeForMonth(date);
 
         Map<String, Object> response = new HashMap<>();

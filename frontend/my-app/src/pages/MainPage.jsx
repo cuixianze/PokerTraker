@@ -24,8 +24,8 @@ function MainPage() {
       .then((response) => {
         const data = response.data;
         setSharkFishData({
-          shark: data.sharkOfMonth?.[0] || "No Data",
-          fish: data.fishOfMonth?.[0] || "No Data",
+          shark: data.sharkOfMonth?.["username"] || "No Data",
+          fish: data.fishOfMonth?.["username"] || "No Data",
         });
         setTotalRake(data.totalRakeForMonth || 0);
       })
