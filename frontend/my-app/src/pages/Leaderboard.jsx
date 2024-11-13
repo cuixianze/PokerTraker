@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Navbar from "../component/Navbar";
-import "../css/leaderBoard.css";
 
 function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState([]);
@@ -97,7 +96,6 @@ function Leaderboard() {
               <td>{user.totalProfit}</td>
               <td>{Math.round(user.winRate * 100)}%</td>
               <td>{user.totalGames}</td>
-
             </tr>
           ))}
         </tbody>
