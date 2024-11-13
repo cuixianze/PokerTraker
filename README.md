@@ -25,11 +25,14 @@
   </p>
 </div>
 <div>
-  <h2>b.페이지</h2>
-  <h2>b.Pages</h2>
+  <h2>b.개발 기간</h2>
 </div>
 <div>
-  <h2>c.Developer</h2>
+  <h2>c.페이지</h2>
+  <h2>c.Pages</h2>
+</div>
+<div>
+  <h2>d.Developer</h2>
   <ul> FE, Design : 정일형
     <li>git : JohnJung-1017</li>
     <li>E-mail : jungih1017@gmail.com</li>
