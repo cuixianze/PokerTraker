@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Navbar from "../component/Navbar";
+import "../css/leaderBoard.css";
 
 function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState([]);
   const [sortType, setSortType] = useState("profit"); // Default sort by profit
   const [timeRange, setTimeRange] = useState("all-time"); // Default to all-time
   const [error, setError] = useState(null);
-
   const currentMonth = new Date().toISOString().slice(0, 7);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         let url = "";
-
         if (timeRange === "all-time") {
           url =
             sortType === "profit"
@@ -57,7 +56,6 @@ function Leaderboard() {
             <option value="monthly">This Month</option>
           </select>
         </label>
-
         <div className="sort-options">
           <button
             onClick={() => setSortType("profit")}
@@ -81,7 +79,6 @@ function Leaderboard() {
       </div>
 
       {error && <p className="error">{error}</p>}
-
       <table className="leaderboard-table">
         <thead>
           <tr>
@@ -100,6 +97,7 @@ function Leaderboard() {
               <td>{user.totalProfit}</td>
               <td>{Math.round(user.winRate * 100)}%</td>
               <td>{user.totalGames}</td>
+
             </tr>
           ))}
         </tbody>

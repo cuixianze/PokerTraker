@@ -24,12 +24,10 @@ function GameDetail() {
   // Destructure necessary fields from gameDetail for easier access
   const { gameDate, rake, shark, fish, players } = gameDetail;
 
-
   return (
     <div className="game-detail">
       <h2>Game Details</h2>
       <p><strong>Date:</strong> {new Date(players[0].game.gameDate).toLocaleDateString()}</p>
-      
       <p><strong>Total Rake:</strong> {rake}</p>
       <div className="shark-fish-info">
         <p><strong>Shark:</strong> {shark.username} </p>
