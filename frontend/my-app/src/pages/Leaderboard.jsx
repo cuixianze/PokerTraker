@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState([]);
-  const [sortType, setSortType] = useState('profit'); // Default sort by profit
-  const [timeRange, setTimeRange] = useState('all-time'); // Default to all-time
+  const [sortType, setSortType] = useState("profit"); // Default sort by profit
+  const [timeRange, setTimeRange] = useState("all-time"); // Default to all-time
   const [error, setError] = useState(null);
 
   const currentMonth = new Date().toISOString().slice(0, 7);
@@ -13,27 +13,29 @@ function Leaderboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let url = '';
+        let url = "";
 
-        if (timeRange === 'all-time') {
-          url = sortType === 'profit'
-            ? 'http://localhost:8080/leaderboard/all-time/shark'
-            : sortType === 'loss'
-            ? 'http://localhost:8080/leaderboard/all-time/fish'
-            : 'http://localhost:8080/leaderboard/all-time/winrate';
+        if (timeRange === "all-time") {
+          url =
+            sortType === "profit"
+              ? "http://localhost:8080/leaderboard/all-time/shark"
+              : sortType === "loss"
+              ? "http://localhost:8080/leaderboard/all-time/fish"
+              : "http://localhost:8080/leaderboard/all-time/winrate";
         } else {
-          url = sortType === 'profit'
-            ? `http://localhost:8080/leaderboard/monthly/shark?month=${currentMonth}`
-            : sortType === 'loss'
-            ? `http://localhost:8080/leaderboard/monthly/fish?month=${currentMonth}`
-            : `http://localhost:8080/leaderboard/monthly/winrate?month=${currentMonth}`;
+          url =
+            sortType === "profit"
+              ? `http://localhost:8080/leaderboard/monthly/shark?month=${currentMonth}`
+              : sortType === "loss"
+              ? `http://localhost:8080/leaderboard/monthly/fish?month=${currentMonth}`
+              : `http://localhost:8080/leaderboard/monthly/winrate?month=${currentMonth}`;
         }
 
         const response = await axios.get(url);
         setLeaderboardData(response.data);
         setError(null);
       } catch (err) {
-        setError('Failed to fetch leaderboard data. Please try again.');
+        setError("Failed to fetch leaderboard data. Please try again.");
       }
     };
 
@@ -41,8 +43,8 @@ function Leaderboard() {
   }, [timeRange, sortType, currentMonth]);
 
   return (
-    <div className="leaderboard">
-      <h2>User Leaderboard</h2>
+    <div className="common">
+      <Navbar />
 
       <div className="controls">
         <label>
@@ -58,20 +60,20 @@ function Leaderboard() {
 
         <div className="sort-options">
           <button
-            onClick={() => setSortType('profit')}
-            className={sortType === 'profit' ? 'active' : ''}
+            onClick={() => setSortType("profit")}
+            className={sortType === "profit" ? "active" : ""}
           >
             Sort by Profit
           </button>
           <button
-            onClick={() => setSortType('loss')}
-            className={sortType === 'loss' ? 'active' : ''}
+            onClick={() => setSortType("loss")}
+            className={sortType === "loss" ? "active" : ""}
           >
             Sort by Loss
           </button>
           <button
-            onClick={() => setSortType('winRate')}
-            className={sortType === 'winRate' ? 'active' : ''}
+            onClick={() => setSortType("winRate")}
+            className={sortType === "winRate" ? "active" : ""}
           >
             Sort by Win Rate
           </button>
@@ -91,12 +93,9 @@ function Leaderboard() {
         </thead>
         <tbody>
           {leaderboardData.map((user, index) => (
-            
             <tr key={index}>
               <td>
-                <Link to={`/user/${user.username}`}>
-                  {user.username}
-                </Link>
+                <Link to={`/user/${user.username}`}>{user.username}</Link>
               </td>
               <td>{user.totalProfit}</td>
               <td>{Math.round(user.winRate * 100)}%</td>

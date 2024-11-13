@@ -1,0 +1,145 @@
+/* create_user CSS */
+.create_user_container {
+  display: flex;
+  flex-direction: row;
+  height: 80vh;
+}
+.create_user,
+.create_user_rule {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+}
+.user_box_input {
+  font-size: 20px;
+  font-weight: 800;
+  color: white;
+  height: 50px;
+  width: 100px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.create_user_box {
+  flex-direction: column;
+  text-align: center;
+  height: 30vh;
+  width: 40vw;
+  border: 3px solid rgba(255, 255, 255, 0.185);
+  border-radius: 20px;
+}
+.user_box_title {
+  color: white;
+  font-size: 50px;
+}
+.button-container {
+  position: relative;
+  display: inline-block;
+}
+.user_box_button {
+  margin-top: 20px;
+  color: white;
+  width: 25vw;
+  height: 50px;
+  font-size: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #b59a13;
+}
+.user_box_button:hover {
+  background-color: #87730f;
+}
+.create_user_rule {
+  justify-content: center;
+  align-items: center;
+}
+.create_user_rule_box {
+  text-align: center;
+  width: 40vw;
+  height: 70vh;
+  border-radius: 30px;
+  border: 5px solid white;
+}
+.rule_box_h1 {
+  color: white;
+}
+.rule_box_h2 {
+  color: #ffe474;
+}
+.rule_box_p1,
+.rule_box_p2 {
+  color: white;
+  font-weight: bold;
+  font-size: large;
+  padding: 30px;
+}
+/* create_game CSS */
+.create_game_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80vh;
+}
+.create_game_box {
+  height: 76vh;
+  width: 70vw;
+  border-radius: 30px;
+  border: solid 3px #aaaaaa;
+}
+.create_game_title {
+  width: 60vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.create_game_box_h2,
+.create_game_box_label {
+  color: white;
+}
+.create_game_box_label {
+  font-size: 30px;
+}
+.create_game_box_players {
+  height: 55vh;
+  width: 70vw;
+  overflow-y: scroll;
+}
+.create_game_box_players::-webkit-scrollbar {
+  display: none;
+}
+.create_game_addBtn {
+  background-color: #b59a13;
+  color: white;
+  font-size: 35px;
+  border: none;
+  border-radius: 20px;
+  width: 400px;
+  height: 50px;
+}
+.create_game_addBtn:hover {
+  background-color: #87730f;
+}
+.create_game_playerBtn {
+  transition: 0.8s ease;
+  background-color: transparent;
+  color: blue;
+  border: 1px solid blue;
+  border-radius: 10px;
+  width: 200px;
+}
+.create_game_playerBtn:hover {
+  background-color: rgb(174, 174, 255);
+  transform: rotate3d(0, 1, 0, 180deg);
+}
+.player-input {
+  background-color: transparent;
+  color: white;
+  font-size: 30px;
+  width: 100px;
+  border: none;
+  border-bottom: 2px solid #b59a13;
+}
+.player-input:focus {
+  outline: none;
+}
