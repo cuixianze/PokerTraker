@@ -18,17 +18,17 @@ function Leaderboard() {
         if (timeRange === "all-time") {
           url =
             sortType === "profit"
-              ? "http://13.239.32.249:8080/leaderboard/all-time/shark"
+              ? "https://13.239.32.249:8080/leaderboard/all-time/shark"
               : sortType === "loss"
-              ? "http://13.239.32.249:8080/leaderboard/all-time/fish"
-              : "http://13.239.32.249:8080/leaderboard/all-time/winrate";
+              ? "https://13.239.32.249:8080/leaderboard/all-time/fish"
+              : "https://13.239.32.249:8080/leaderboard/all-time/winrate";
         } else {
           url =
             sortType === "profit"
-              ? `http://13.239.32.249:8080/leaderboard/monthly/shark?month=${currentMonth}`
+              ? `https://13.239.32.249:8080/leaderboard/monthly/shark?month=${currentMonth}`
               : sortType === "loss"
-              ? `http://13.239.32.249:8080/leaderboard/monthly/fish?month=${currentMonth}`
-              : `http://13.239.32.249:8080/leaderboard/monthly/winrate?month=${currentMonth}`;
+              ? `https://13.239.32.249:8080/leaderboard/monthly/fish?month=${currentMonth}`
+              : `https://13.239.32.249:8080/leaderboard/monthly/winrate?month=${currentMonth}`;
         }
 
         const response = await axios.get(url);

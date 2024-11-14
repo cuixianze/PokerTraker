@@ -18,7 +18,7 @@ function MainPage() {
   useEffect(() => {
     // Fetch data for Shark, Fish, and Total Rake
     axios
-      .get("http://13.239.32.249:8080/main/monthlyStats?month=2024-11")
+      .get("https://13.239.32.249:8080/main/monthlyStats?month=2024-11")
       .then((response) => {
         const data = response.data;
         setSharkFishData({
@@ -35,7 +35,7 @@ function MainPage() {
 
   const fetchGames = (page) => {
     axios
-      .get("http://13.239.32.249:8080/main/games")
+      .get("https://13.239.32.249:8080/main/games")
       .then((response) => {
         setGameList(response.data.content || []);
         setTotalPages(response.data.totalPages);
@@ -56,7 +56,7 @@ function MainPage() {
       <Navbar />
       <div className="main_totalRake">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
+          xmlns="https://www.w3.org/2000/svg"
           width="40px"
           height="40px"
           viewBox="0 0 32 32"
@@ -91,7 +91,7 @@ function MainPage() {
             <div className="main_shark">
               <div className="main_spotlight_box">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns="https://www.w3.org/2000/svg"
                   width="60px"
                   height="60px"
                   viewBox="0 0 512 512"
@@ -109,7 +109,7 @@ function MainPage() {
             <div className="main_fish">
               <div className="main_spotlight_box">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns="https://www.w3.org/2000/svg"
                   width="60px"
                   height="60px"
                   viewBox="0 0 64 64"

@@ -33,7 +33,7 @@ const UserDetail = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://13.239.32.249:8080/user/${username}/details`
+          `https://13.239.32.249:8080/user/${username}/details`
         );
         setUserData(response.data);
       } catch (error) {

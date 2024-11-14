@@ -33,7 +33,7 @@ function GameCreationForm() {
 
     try {
       const response = await axios.post(
-        "http://13.239.32.249:8080/create/gameWithPlayers",
+        "https://13.239.32.249:8080/create/gameWithPlayers",
         gameData
       );
       setResponseMessage("Game created successfully");
