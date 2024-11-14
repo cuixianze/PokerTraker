@@ -15,10 +15,12 @@
 }
 .main_left,
 .main_right {
-  width: 50%;
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+.main_left {
+  width: 70%;
 }
 .main_spotlight {
   display: flex;
@@ -51,4 +53,14 @@
 }
 .totalRake_h3 {
   color: #ffe474;
+}
+/* SharkFish CSS */
+.shark-fish {
+  text-align: center;
+}
+.shark_data,
+.fish_data {
+  color: #ffe474;
+  font-size: 20px;
+  font-weight: bold;
 }

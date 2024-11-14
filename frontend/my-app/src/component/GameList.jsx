@@ -28,7 +28,9 @@ function GameList({ games }) {
               <td className="gameList_td">{game.sharkUsername}</td>
               <td className="gameList_td">{game.fishUsername}</td>
               <td className="gameList_td">
-                <Link to={`/games/${game.id}`}>View Details</Link>
+                <Link to={`/games/${game.id}`} className="gameList_td">
+                  View Details
+                </Link>
               </td>
             </tr>
           ))}
