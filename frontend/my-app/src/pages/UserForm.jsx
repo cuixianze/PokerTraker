@@ -18,7 +18,7 @@ function UserForm() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/create/user",
+        "http://13.239.32.249:8080/create/user",
         userData
       );
       setResponseMessage(`User created: ${response.data.username}`);

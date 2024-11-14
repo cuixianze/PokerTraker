@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 function GameDetail() {
   const { id } = useParams(); // Fetch the game ID from the URL
@@ -9,11 +9,12 @@ function GameDetail() {
 
   useEffect(() => {
     // Fetch game details by game ID
-    axios.get(`http://localhost:8080/games/${id}`)
-      .then(response => {
+    axios
+      .get(`http://13.239.32.249:8080/games/${id}`)
+      .then((response) => {
         setGameDetail(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         setError("Failed to fetch game details.");
       });
   }, [id]);
@@ -27,19 +28,32 @@ function GameDetail() {
   return (
     <div className="game-detail">
       <h2>Game Details</h2>
-      <p><strong>Date:</strong> {new Date(players[0].game.gameDate).toLocaleDateString()}</p>
-      <p><strong>Total Rake:</strong> {rake}</p>
+      <p>
+        <strong>Date:</strong>{" "}
+        {new Date(players[0].game.gameDate).toLocaleDateString()}
+      </p>
+      <p>
+        <strong>Total Rake:</strong> {rake}
+      </p>
       <div className="shark-fish-info">
-        <p><strong>Shark:</strong> {shark.username} </p>
-        <p><strong>Fish:</strong> {fish.username} </p>
+        <p>
+          <strong>Shark:</strong> {shark.username}{" "}
+        </p>
+        <p>
+          <strong>Fish:</strong> {fish.username}{" "}
+        </p>
       </div>
 
       <h3>Player Profit/Loss</h3>
       <ul>
-        {players.map(player => (
+        {players.map((player) => (
           <li key={player.id} className="player-info">
-            <p><strong>Player:</strong> {player.user.username}</p>
-            <p><strong>Profit/Loss:</strong> {player.profitLoss}</p>
+            <p>
+              <strong>Player:</strong> {player.user.username}
+            </p>
+            <p>
+              <strong>Profit/Loss:</strong> {player.profitLoss}
+            </p>
           </li>
         ))}
       </ul>

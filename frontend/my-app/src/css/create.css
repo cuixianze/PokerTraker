@@ -83,12 +83,13 @@
 }
 .create_game_box {
   height: 76vh;
-  width: 70vw;
+  width: 40vw;
   border-radius: 30px;
   border: solid 3px #aaaaaa;
 }
 .create_game_title {
-  width: 60vw;
+  margin-top: 10px;
+  width: 35vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -122,21 +123,21 @@
 }
 .create_game_playerBtn {
   transition: 0.8s ease;
-  background-color: transparent;
-  color: blue;
-  border: 1px solid blue;
+  background-color: #9b8411;
+  color: white;
+  font-weight: 400;
   border-radius: 10px;
+  border: none;
   width: 200px;
 }
 .create_game_playerBtn:hover {
-  background-color: rgb(174, 174, 255);
-  transform: rotate3d(0, 1, 0, 180deg);
+  background-color: #ffe374bb;
 }
 .player-input {
   background-color: transparent;
   color: white;
   font-size: 30px;
-  width: 100px;
+  width: 130px;
   border: none;
   border-bottom: 2px solid #b59a13;
 }
