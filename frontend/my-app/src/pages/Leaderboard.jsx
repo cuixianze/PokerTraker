@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Navbar from "../component/Navbar";
+import Copyright from "../component/copyright";
+import "../css/leaderBoard.css";
 
 function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState([]);
@@ -16,17 +18,17 @@ function Leaderboard() {
         if (timeRange === "all-time") {
           url =
             sortType === "profit"
-              ? "http://localhost:8080/leaderboard/all-time/shark"
+              ? "http://13.239.32.249:8080/leaderboard/all-time/shark"
               : sortType === "loss"
-              ? "http://localhost:8080/leaderboard/all-time/fish"
-              : "http://localhost:8080/leaderboard/all-time/winrate";
+              ? "http://13.239.32.249:8080/leaderboard/all-time/fish"
+              : "http://13.239.32.249:8080/leaderboard/all-time/winrate";
         } else {
           url =
             sortType === "profit"
-              ? `http://localhost:8080/leaderboard/monthly/shark?month=${currentMonth}`
+              ? `http://13.239.32.249:8080/leaderboard/monthly/shark?month=${currentMonth}`
               : sortType === "loss"
-              ? `http://localhost:8080/leaderboard/monthly/fish?month=${currentMonth}`
-              : `http://localhost:8080/leaderboard/monthly/winrate?month=${currentMonth}`;
+              ? `http://13.239.32.249:8080/leaderboard/monthly/fish?month=${currentMonth}`
+              : `http://13.239.32.249:8080/leaderboard/monthly/winrate?month=${currentMonth}`;
         }
 
         const response = await axios.get(url);
@@ -43,63 +45,91 @@ function Leaderboard() {
   return (
     <div className="common">
       <Navbar />
-
-      <div className="controls">
-        <label>
-          Time Range:
-          <select
-            value={timeRange}
-            onChange={(e) => setTimeRange(e.target.value)}
-          >
-            <option value="all-time">All-Time</option>
-            <option value="monthly">This Month</option>
-          </select>
-        </label>
-        <div className="sort-options">
-          <button
-            onClick={() => setSortType("profit")}
-            className={sortType === "profit" ? "active" : ""}
-          >
-            Sort by Profit
-          </button>
-          <button
-            onClick={() => setSortType("loss")}
-            className={sortType === "loss" ? "active" : ""}
-          >
-            Sort by Loss
-          </button>
-          <button
-            onClick={() => setSortType("winRate")}
-            className={sortType === "winRate" ? "active" : ""}
-          >
-            Sort by Win Rate
-          </button>
+      <div className="leaderboard_container">
+        <div className="board_box">
+          <div className="board_controller">
+            <div className="board_controller_title">
+              <div className="fuck">
+                <div className="fuckfuck">LeaderBoard</div>
+                <label>
+                  <select
+                    value={timeRange}
+                    onChange={(e) => setTimeRange(e.target.value)}
+                  >
+                    <option value="all-time">All-Time</option>
+                    <option value="monthly">This Month</option>
+                  </select>
+                </label>
+              </div>
+              <div className="sort-options">
+                <button
+                  onClick={() => setSortType("profit")}
+                  className={
+                    sortType === "profit"
+                      ? "button profit-button active"
+                      : "button profit-button"
+                  }
+                >
+                  Sort by Profit
+                </button>
+                <button
+                  onClick={() => setSortType("loss")}
+                  className={
+                    sortType === "loss"
+                      ? "button profit-button active"
+                      : "button profit-button"
+                  }
+                >
+                  Sort by Loss
+                </button>
+                <button
+                  onClick={() => setSortType("winRate")}
+                  className={
+                    sortType === "winRate"
+                      ? "button profit-button active"
+                      : "button profit-button"
+                  }
+                >
+                  Sort by Win Rate
+                </button>
+              </div>
+            </div>
+            <div className="board_table">
+              <table className="leaderboard_table">
+                <thead>
+                  <tr>
+                    <th className="board_table_th">Username</th>
+                    <th className="board_table_th">Total Profit</th>
+                    <th className="board_table_th">Win Rate</th>
+                    <th className="board_table_th">Total Games</th>
+                  </tr>
+                </thead>
+                <tbody className="board_body">
+                  {leaderboardData.map((user, index) => (
+                    <tr key={index} className="board_table_tr">
+                      <td>
+                        <Link
+                          to={`/user/${user.username}`}
+                          className="board_table_link"
+                        >
+                          {user.username}
+                        </Link>
+                      </td>
+                      <td className="board_table_td">{user.totalProfit}</td>
+                      <td className="board_table_td">
+                        {Math.round(user.winRate * 100)}%
+                      </td>
+                      <td className="board_table_td">{user.totalGames}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          {error && <p className="error">{error}</p>}
         </div>
       </div>
-
-      {error && <p className="error">{error}</p>}
-      <table className="leaderboard-table">
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Total Profit</th>
-            <th>Win Rate</th>
-            <th>Total Games</th>
-          </tr>
-        </thead>
-        <tbody>
-          {leaderboardData.map((user, index) => (
-            <tr key={index}>
-              <td>
-                <Link to={`/user/${user.username}`}>{user.username}</Link>
-              </td>
-              <td>{user.totalProfit}</td>
-              <td>{Math.round(user.winRate * 100)}%</td>
-              <td>{user.totalGames}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Copyright />
     </div>
   );
 }

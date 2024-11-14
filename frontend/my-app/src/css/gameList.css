@@ -9,10 +9,20 @@
 }
 .gameList_h3,
 .gameList_th,
-.gameList_th {
+.gameList_th,
+.gameList_td {
+  text-align: center;
   color: white;
+  font-size: 20px;
   font-weight: 100;
 }
 .gameList_tr {
   background-color: #313131;
+}
+.gameList_td {
+  text-decoration: none;
+  color: white;
+}
+.gameList_td:hover {
+  color: #b89e14;
 }

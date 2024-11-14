@@ -1,0 +1,84 @@
+.leaderboard_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.board_box {
+  width: 80vw;
+  height: 80vh;
+}
+.fuck {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.fuckfuck {
+  color: white;
+  font-size: 30px;
+}
+.board_controller_title {
+  display: flex;
+  flex-direction: row;
+  width: 80vw;
+}
+.sort-options {
+  width: 80vw;
+  text-align: right;
+}
+/* 버튼 디자인 지정 */
+.profit-button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #282828;
+  color: white;
+  border: 1px solid gold;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* 호버 시 스타일 */
+.profit-button:hover {
+  background-color: gold;
+}
+
+/* 활성화된 상태 스타일 (active 클래스 적용 시) */
+.profit-button.active {
+  background-color: gold;
+  color: #282828;
+  transform: scale(1.05); /* 버튼을 약간 확대 */
+}
+.leaderboard_table {
+  border-collapse: collapse; /* 셀 사이 구간을 없앰 */
+  border-spacing: 0; /* 여분 간격 제거 */
+  width: 80vw;
+  height: 70vh;
+  text-align: center;
+}
+.board_table_th {
+  background-color: #333333;
+  height: 40px;
+  font-size: 15px;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.179);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.179);
+  color: white;
+}
+.board_table_tr {
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.179);
+  height: 20px;
+}
+.board_table_tr:hover {
+  background-color: rgba(255, 255, 255, 0.255);
+}
+.board_table_td,
+.board_table_link {
+  color: white;
+  font-size: 15px;
+}
+.board_table_link {
+  text-decoration: none;
+}

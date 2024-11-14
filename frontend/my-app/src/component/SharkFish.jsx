@@ -3,8 +3,8 @@ import React from "react";
 function SharkFish({ shark, fish }) {
   return (
     <div className="shark-fish">
-      <p>Shark: {shark}</p>
-      <p>Fish: {fish}</p>
+      <p className="shark_data">{shark}</p>
+      <p className="fish_data">{fish}</p>
     </div>
   );
 }
