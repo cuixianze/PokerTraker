@@ -18,7 +18,9 @@ function MainPage() {
   useEffect(() => {
     // Fetch data for Shark, Fish, and Total Rake
     axios
-      .get("https://13.239.32.249:8080/main/monthlyStats?month=2024-11")
+      .get(
+        "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/main/games/main/monthlyStats?month=2024-11"
+      )
       .then((response) => {
         const data = response.data;
         setSharkFishData({
@@ -35,7 +37,9 @@ function MainPage() {
 
   const fetchGames = (page) => {
     axios
-      .get("https://13.239.32.249:8080/main/games")
+      .get(
+        "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/main/games/main/games"
+      )
       .then((response) => {
         setGameList(response.data.content || []);
         setTotalPages(response.data.totalPages);
