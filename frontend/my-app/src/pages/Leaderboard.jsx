@@ -18,7 +18,7 @@ function Leaderboard() {
         if (timeRange === "all-time") {
           url =
             sortType === "profit"
-              ? "http://13.239.32.249:8080/leaderboard/all-time/shark"
+              ? "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/leaderboard/all-time/shark"
               : sortType === "loss"
               ? "http://13.239.32.249:8080/leaderboard/all-time/fish"
               : "http://13.239.32.249:8080/leaderboard/all-time/winrate";

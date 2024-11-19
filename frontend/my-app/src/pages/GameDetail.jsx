@@ -10,7 +10,7 @@ function GameDetail() {
   useEffect(() => {
     // Fetch game details by game ID
     axios
-      .get(`http://13.239.32.249:8080/games/${id}`)
+      .get(`https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/games/${id}`)
       .then((response) => {
         setGameDetail(response.data);
       })
