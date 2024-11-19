@@ -1,6 +1,5 @@
 package com.example.poker_traker.poker_traker;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -10,10 +9,13 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // Allows CORS for all endpoints
-                .allowedOrigins("http://localhost:3000") // Allow only this origin
-                .allowedMethods("GET", "POST", "PUT", "DELETE") // Allow HTTP methods
-                .allowedHeaders("*")
-                .allowCredentials(true);
+        registry.addMapping("/**") // Allow CORS for all endpoints
+                .allowedOrigins(
+                        "http://localhost:3000", // Local development
+                        "https://poker-tracker-six.vercel.app" // Deployed frontend
+                )
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Allow HTTP methods
+                .allowedHeaders("*") // Allow all headers
+                .allowCredentials(true); // Allow credentials like cookies
     }
 }
