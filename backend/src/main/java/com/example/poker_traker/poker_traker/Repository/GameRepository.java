@@ -11,7 +11,10 @@ import java.util.List;
 public interface GameRepository extends JpaRepository<Game, Long> {
 
     // Total rake for the specified month
-    @Query("SELECT SUM(g.totalRake) FROM Game g WHERE MONTH(g.gameDate) = MONTH(:date) AND YEAR(g.gameDate) = YEAR(:date)")
+    @Query("SELECT SUM(g.totalRake) " +
+            "FROM Game g " +
+            "WHERE EXTRACT(MONTH FROM g.gameDate) = EXTRACT(MONTH FROM CAST(:date AS TIMESTAMP)) " +
+            "AND EXTRACT(YEAR FROM g.gameDate) = EXTRACT(YEAR FROM CAST(:date AS TIMESTAMP))")
     Integer findTotalRakeForMonth(@Param("date") LocalDateTime date);
 
     // Top profit for the specified month (Shark)
@@ -21,7 +24,8 @@ public interface GameRepository extends JpaRepository<Game, Long> {
             "SUM(CASE WHEN gp.profitLoss >= 0 THEN 1 ELSE 0 END) * 1.0 / COUNT(gp) AS winRate " +
             "FROM Game_Player gp " +
             "JOIN gp.game g " +
-            "WHERE MONTH(g.gameDate) = MONTH(:date) AND YEAR(g.gameDate) = YEAR(:date) " +
+            "WHERE EXTRACT(MONTH FROM g.gameDate) = EXTRACT(MONTH FROM CAST(:date AS TIMESTAMP)) " +
+            "AND EXTRACT(YEAR FROM g.gameDate) = EXTRACT(YEAR FROM CAST(:date AS TIMESTAMP)) " +
             "GROUP BY gp.user.id, gp.user.username " +
             "ORDER BY totalProfit DESC")
     List<Object[]> findTopSharkForMonth(@Param("date") LocalDateTime date);
@@ -33,7 +37,8 @@ public interface GameRepository extends JpaRepository<Game, Long> {
             "SUM(CASE WHEN gp.profitLoss >= 0 THEN 1 ELSE 0 END) * 1.0 / COUNT(gp) AS winRate " +
             "FROM Game_Player gp " +
             "JOIN gp.game g " +
-            "WHERE MONTH(g.gameDate) = MONTH(:date) AND YEAR(g.gameDate) = YEAR(:date) " +
+            "WHERE EXTRACT(MONTH FROM g.gameDate) = EXTRACT(MONTH FROM CAST(:date AS TIMESTAMP)) " +
+            "AND EXTRACT(YEAR FROM g.gameDate) = EXTRACT(YEAR FROM CAST(:date AS TIMESTAMP)) " +
             "GROUP BY gp.user.id, gp.user.username " +
             "ORDER BY totalLoss ASC")
     List<Object[]> findTopFishForMonth(@Param("date") LocalDateTime date);
@@ -75,7 +80,8 @@ public interface GameRepository extends JpaRepository<Game, Long> {
             "SUM(CASE WHEN gp.profitLoss >= 0 THEN 1 ELSE 0 END) * 1.0 / COUNT(gp) AS winRate " +
             "FROM Game_Player gp " +
             "JOIN gp.game g " +
-            "WHERE MONTH(g.gameDate) = MONTH(:date) AND YEAR(g.gameDate) = YEAR(:date) " +
+            "WHERE EXTRACT(MONTH FROM g.gameDate) = EXTRACT(MONTH FROM CAST(:date AS TIMESTAMP)) " +
+            "AND EXTRACT(YEAR FROM g.gameDate) = EXTRACT(YEAR FROM CAST(:date AS TIMESTAMP)) " +
             "GROUP BY gp.user.id, gp.user.username " +
             "ORDER BY winRate DESC")
     List<Object[]> findTopWinRateForMonth(@Param("date") LocalDateTime date);
