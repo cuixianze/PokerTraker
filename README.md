@@ -1,5 +1,5 @@
 <div>
-  <h1>♠️Poker-Tracker</h1>
+  <h1>♠Poker-Tracker</h1>
 </div>
 <div>
   <h2>a.프로젝트 소개</h2>
@@ -25,14 +25,21 @@
   </p>
 </div>
 <div>
-  <h2>b.개발 기간</h2>
+  <h2>b.Pages</h2>
 </div>
 <div>
-  <h2>c.페이지</h2>
-  <h2>c.Pages</h2>
+  <h2>c.개발 기간(Time laps)</h2>
+  <p> 2024/11/13 : 백엔드 서버 aws 배포</p>
+  <p> 2024/11/14 : 프론트엔드 vercel 배포</p>
+  <p> 2024/11/08 ~ 2024/11/14 : 개발 및 v1 배포 완료</p>
+  <p> 2024/1120 : 실제 데이터 입력 및 유저 사용 시작</p>
 </div>
 <div>
-  <h2>d.Developer</h2>
+  <h2>d.Versions</h2>
+  <p>V1 : creatUser, userLeaderboard, userDetail, createGame, gameDetail </p>
+</div>
+<div>
+  <h2>e.Developer</h2>
   <ul> FE, Design : 정일형
     <li>git : JohnJung-1017</li>
     <li>E-mail : jungih1017@gmail.com</li>
@@ -42,13 +49,13 @@
     </li>
     <li>
       <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
-      <img src="https://img.shields.io/badge/amazonwebservices-232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=white">
+      <img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
     </li>
     <li><img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"></li>
   </ul>
   <ul> BE, DevOps : 최현택
-    <li>git : Null </li>
-    <li>E-mail : Null </li>
+    <li>git : cuixianze123 </li>
+    <li>E-mail : cuixianze2286@naver.com </li>
     <li>
       <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=white">
       <img src="https://img.shields.io/badge/postgresql-4169E1?style=for-the-badge&logo=postgresql&logoColor=white">
@@ -61,3 +68,19 @@
     
   </ul>
 </div>
+<div>
+  <h2>f.Deploy</h2>
+  <div>
+    <h3>Frontend</h3>
+    <p>
+      기존 레포를 fork하여 배포용 레포 생성 <br>
+      Vercel을 사용하여 frontend 배포<br>
+      오류 및 버전 업데이트가 필요한 경우 업스트림 레포에서 작업의 PR을 생성한 후 현재 레포에 병합
+    </p>
+  </div>
+  <div>
+    <h3>Backend</h3>
+    
+  </div>
+</div>
+
