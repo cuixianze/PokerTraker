@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import axios from "axios";
 import Navbar from "../component/Navbar";
 import Copyright from "../component/copyright";
@@ -137,6 +138,7 @@ function MainPage() {
         </div>
       </div>
       <Copyright />
+      <Analytics />
     </div>
   );
 }
