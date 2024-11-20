@@ -1,5 +1,9 @@
 <div>
   <h1>♠Poker-Tracker</h1>
+  <p>
+    upstream branch : https://github.com/cuixianze/PokerTraker.git <br>
+    origin branch : https://github.com/JohnJung-1017/PokerTracker.git
+  </p>
 </div>
 <div>
   <h2>a.프로젝트 소개</h2>
@@ -76,14 +80,14 @@
       <h4>배포 방식</h4>
       기존 레포를 fork하여 배포용 레포 생성 <br>
       Vercel을 사용하여 frontend 배포<br>
-      오류 및 버전 업데이트가 필요한 경우 업스트림 레포에서 작업의 PR을 생성한 후 현재 레포에 병합
+      오류 및 버전 업데이트가 필요한 경우 업스트림 레포에서 작업의 PR을 생성한 후 origin 레포에 병합
     </p>
     <p>
       <h4>업데이트 방식</h4>
       <ul>
         <li>upstream 레포에서 작업 및 로컬에서 실행 확인</li>
         <li>upstream 레포에 merge</li>
-        <li>fork 레포에 update</li>
+        <li>origin 레포에 update</li>
           [git bash] <br>
           git fetch upstream<br>
           git merge upstream/main<br>
