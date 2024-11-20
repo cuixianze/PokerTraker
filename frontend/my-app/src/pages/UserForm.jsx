@@ -18,7 +18,7 @@ function UserForm() {
 
     try {
       const response = await axios.post(
-        "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/main/games/create/user",
+        "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/create/user",
         userData
       );
       setResponseMessage(`User created: ${response.data.username}`);

@@ -19,7 +19,7 @@ function MainPage() {
     // Fetch data for Shark, Fish, and Total Rake
     axios
       .get(
-        "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/main/games/main/monthlyStats?month=2024-11"
+        "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/main/monthlyStats?month=2024-11"
       )
       .then((response) => {
         const data = response.data;
@@ -38,7 +38,7 @@ function MainPage() {
   const fetchGames = (page) => {
     axios
       .get(
-        "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/main/games/main/games"
+        "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/main/games"
       )
       .then((response) => {
         setGameList(response.data.content || []);

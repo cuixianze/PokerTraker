@@ -18,17 +18,17 @@ function Leaderboard() {
         if (timeRange === "all-time") {
           url =
             sortType === "profit"
-              ? "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/main/games/leaderboard/all-time/shark"
+              ? "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/leaderboard/all-time/shark"
               : sortType === "loss"
-              ? "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/main/games/leaderboard/all-time/fish"
-              : "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/main/games/leaderboard/all-time/winrate";
+              ? "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/leaderboard/all-time/fish"
+              : "https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/leaderboard/all-time/winrate";
         } else {
           url =
             sortType === "profit"
-              ? `https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/main/games/leaderboard/monthly/shark?month=${currentMonth}`
+              ? `https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/leaderboard/monthly/shark?month=${currentMonth}`
               : sortType === "loss"
-              ? `https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/main/games/leaderboard/monthly/fish?month=${currentMonth}`
-              : `https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/main/games/leaderboard/monthly/winrate?month=${currentMonth}`;
+              ? `https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/leaderboard/monthly/fish?month=${currentMonth}`
+              : `https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/leaderboard/monthly/winrate?month=${currentMonth}`;
         }
 
         const response = await axios.get(url);

@@ -33,7 +33,7 @@ const UserDetail = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/main/games/user/${username}/details`
+          `https://xn--hj2bu55bba230b7ub.xn--oi2b61z32a.xn--3e0b707e/user/${username}/details`
         );
         setUserData(response.data);
       } catch (error) {
