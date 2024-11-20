@@ -32,7 +32,7 @@
   <p> 2024/11/13 : 백엔드 서버 aws 배포</p>
   <p> 2024/11/14 : 프론트엔드 vercel 배포</p>
   <p> 2024/11/08 ~ 2024/11/14 : 개발 및 v1 배포 완료</p>
-  <p> 2024/1120 : 실제 데이터 입력 및 유저 사용 시작</p>
+  <p> 2024/1120 : 실제 데이터 입력 및 유저 사용 시작, vercel_analytics 설치</p>
 </div>
 <div>
   <h2>d.Versions</h2>
@@ -73,9 +73,23 @@
   <div>
     <h3>Frontend</h3>
     <p>
+      <h4>배포 방식</h4>
       기존 레포를 fork하여 배포용 레포 생성 <br>
       Vercel을 사용하여 frontend 배포<br>
       오류 및 버전 업데이트가 필요한 경우 업스트림 레포에서 작업의 PR을 생성한 후 현재 레포에 병합
+    </p>
+    <p>
+      <h4>업데이트 방식</h4>
+      <ul>
+        <li>upstream 레포에서 작업 및 로컬에서 실행 확인</li>
+        <li>upstream 레포에 merge</li>
+        <li>fork 레포에 update</li>
+          [git bash] <br>
+          git fetch upstream<br>
+          git merge upstream/main<br>
+          git push origin main<br>
+        <li>vercel에 자동반영</li>
+      </ul>
     </p>
   </div>
   <div>
