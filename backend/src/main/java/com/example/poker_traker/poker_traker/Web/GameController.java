@@ -6,6 +6,8 @@ import com.example.poker_traker.poker_traker.Entity.Game_Player;
 import com.example.poker_traker.poker_traker.Service.GameService;
 import com.example.poker_traker.poker_traker.Service.GamePlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +48,12 @@ public class GameController {
         );
 
         return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> removeGame(@PathVariable Long id){
+        gameService.removeGameById(id);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 }
 

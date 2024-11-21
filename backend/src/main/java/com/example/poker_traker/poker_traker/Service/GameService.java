@@ -121,4 +121,6 @@ public class GameService {
     public Optional<Game> getGameById(Long id) {
         return gameRepository.findById(id);
     }
+
+    public void removeGameById(Long id){ gameRepository.deleteById(id);}
 }

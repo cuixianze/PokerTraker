@@ -15,10 +15,11 @@ public class Game_Player {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "game_id", nullable = false)
+    @JoinColumn(name = "game_id", nullable = false, foreignKey = @ForeignKey(name = "fk_game_player_game_id", value = ConstraintMode.CONSTRAINT))
     private Game game;
 
     @Column(nullable = false)
     private int profitLoss;
 }
+
 

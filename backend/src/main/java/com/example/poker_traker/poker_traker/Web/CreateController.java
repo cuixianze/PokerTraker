@@ -5,6 +5,7 @@ import com.example.poker_traker.poker_traker.Entity.Game;
 import com.example.poker_traker.poker_traker.Entity.GameCreationDTO;
 import com.example.poker_traker.poker_traker.Entity.Game_Player;
 import com.example.poker_traker.poker_traker.Entity.User;
+import com.example.poker_traker.poker_traker.Exception.UserNotFoundException;
 import com.example.poker_traker.poker_traker.Service.GamePlayerService;
 import com.example.poker_traker.poker_traker.Service.GameService;
 import com.example.poker_traker.poker_traker.Service.UserService;
@@ -59,9 +60,9 @@ public class CreateController {
 
         // Retrieve User entities for shark and fish
         User sharkUser = userService.getUserByUsername(shark.get().getUsername())
-                .orElseThrow(() -> new RuntimeException("Shark user not found"));
+                .orElseThrow(() -> new UserNotFoundException("Shark user not found"));
         User fishUser = userService.getUserByUsername(fish.get().getUsername())
-                .orElseThrow(() -> new RuntimeException("Fish user not found"));
+                .orElseThrow(() -> new UserNotFoundException("Fish user not found"));
 
         // Step 2: Create the Game with identified Shark and Fish
         Game game = new Game();
@@ -74,7 +75,7 @@ public class CreateController {
         List<Game_Player> gamePlayers = new ArrayList<>();
         for (GameCreationDTO.PlayerPnL playerData : request.getPlayers()) {
             User user = userService.getUserByUsername(playerData.getUsername())
-                    .orElseThrow(() -> new RuntimeException("User " + playerData.getUsername() + " not found"));
+                    .orElseThrow(() -> new UserNotFoundException("User " + playerData.getUsername() + " not found"));
 
             // Update the user's PnL
             user.setTotalPnL(user.getTotalPnL() + playerData.getProfitLoss());
