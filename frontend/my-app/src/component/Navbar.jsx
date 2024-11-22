@@ -1,9 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Icon } from "@iconify/react";
 import "../css/navBar.css";
+import axios from "axios";
+import Modal from "./modal";
 
 function Navbar() {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // 서버로 ID와 PW 전송 (서버 URL은 실제 서버 주소로 변경)
+      const response = await axios.post("#", {
+        id,
+        password,
+      });
+
+      // 로그인 성공 시 서버 응답을 통해 권한 확인
+      if (
+        response.data.status === "success" &&
+        response.data.role === "admin"
+      ) {
+        localStorage.setItem("role", "admin");
+      } else {
+        setError("Invalid credentials or not an admin.");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("An error occurred while logging in.");
+    }
+  };
+  /*
+    json 응답 예시
+    "status": "success", // 로그인 성공 여부
+    "role": "admin"      // 관리자 권한 (admin, user 등)
+  */
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
   return (
     <nav className="navBar">
       <div className="navBar_container">
@@ -48,7 +86,39 @@ function Navbar() {
           </li>
         </ul>
         <div className="navBar_space">
-          {/* 다음에 회원가입 만들 수 있는 공간 */}
+          <button className="logIn" onClick={openModal}>
+            Admin
+          </button>
+          <Modal isOpen={isModalOpen} onClose={closeModal}>
+            <form onSubmit={handleSubmit}>
+              <fieldset>
+                <legend>관리자 로그인</legend>
+                <div>
+                  <label htmlFor="id">ID</label>
+                  <input
+                    type="text"
+                    placeholder="아이디 입력"
+                    id="id"
+                    value={id}
+                    onChange={(e) => setId(e.target.value)}
+                    required
+                  ></input>
+                  <input
+                    type="password"
+                    placeholder="비밀번호 입력"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  ></input>
+                  {error && <p style={{ color: "red" }}>{error}</p>}
+                </div>
+                <div>
+                  <button type="submit">로그인</button>
+                </div>
+              </fieldset>
+            </form>
+          </Modal>
         </div>
       </div>
     </nav>
