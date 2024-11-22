@@ -97,7 +97,7 @@ function GameCreationForm() {
                 </div>
               ))}
             </div>
-            <button type="submit" className="create_game_addBtn" disabled>
+            <button type="submit" className="create_game_addBtn">
               Add Current Session
             </button>
           </form>
