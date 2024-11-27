@@ -26,3 +26,20 @@
 .gameList_td:hover {
   color: #b89e14;
 }
+@media (max-width: 768px) {
+  .gameList {
+    height: 39vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
+  .gameList_h3,
+  .gameList_th,
+  .gameList_th,
+  .gameList_td {
+    text-align: center;
+    color: white;
+    font-size: 10px;
+    font-weight: 50;
+  }
+}
