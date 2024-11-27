@@ -82,3 +82,39 @@
 .board_table_link {
   text-decoration: none;
 }
+@media (max-width: 768px) {
+  .leaderboard_container {
+    height: 83vh;
+  }
+  .board_controller_title {
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+  }
+  .board_box {
+    width: 100vw;
+    height: 80vh;
+  }
+  .sort-options {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+  }
+  .board_controller_title {
+    flex-direction: column;
+  }
+  .profit-button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #282828;
+    color: white;
+    border: 1px solid gold;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  .leaderboard_table {
+    width: 100vw;
+  }
+}
