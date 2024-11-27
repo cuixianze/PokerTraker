@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import axios from "axios";
 import Navbar from "../component/Navbar";
 import Copyright from "../component/copyright";
@@ -139,6 +140,7 @@ function MainPage() {
       </div>
       <Copyright />
       <Analytics />
+      <SpeedInsights />
     </div>
   );
 }
