@@ -5,6 +5,12 @@ import axios from "axios";
 import Modal from "./modal";
 
 function Navbar() {
+  //navBar 수정 -> 우측 토글
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+  //여기부터 로그인 팝업
   const [isModalOpen, setModalOpen] = useState(false);
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
@@ -63,7 +69,7 @@ function Navbar() {
           <div className="navBar_webName">Poker Tracker</div>
         </div>
         {/* navBar 페이지 */}
-        <ul className="navBar_list">
+        <ul className={`navBar_list ${isMenuOpen ? "menu-open" : ""}`}>
           <li>
             <Link to="/" className="navBar_menu">
               Home
@@ -85,6 +91,26 @@ function Navbar() {
             </Link>
           </li>
         </ul>
+        {/* 햄버거 메뉴 아이콘 */}
+        <button className="hamburger-icon" onClick={toggleMenu}>
+          ☰
+        </button>
+        <div className={`sidebar-menu ${isMenuOpen ? "menu-open" : ""}`}>
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/leaderboard">User Leaderboard</a>
+            </li>
+            <li>
+              <a href="/create-user">Create User</a>
+            </li>
+            <li>
+              <a href="/create-game">Create Game</a>
+            </li>
+          </ul>
+        </div>
         <div className="navBar_space">
           <button className="logIn" onClick={openModal}>
             Admin
