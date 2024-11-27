@@ -45,7 +45,7 @@ function UserForm() {
                   required
                 />
               </div>
-              <button type="submit" className="user_box_button" disabled>
+              <button type="submit" className="user_box_button">
                 Join Us
               </button>
             </form>
