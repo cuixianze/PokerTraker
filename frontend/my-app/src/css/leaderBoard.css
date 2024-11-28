@@ -81,6 +81,7 @@
 }
 .board_table_link {
   text-decoration: none;
+  color: white;
 }
 @media (max-width: 768px) {
   .leaderboard_container {
