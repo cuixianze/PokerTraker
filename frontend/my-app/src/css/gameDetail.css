@@ -1,0 +1,97 @@
+.gameDetail_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gameDetail_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80vw;
+  height: 80vh;
+}
+.gameDetail {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  height: 10vh;
+  width: 80vw;
+}
+.gd_title {
+  font-size: 6vh;
+  color: white;
+}
+.gd_date {
+  color: gold;
+}
+.gameDetail_content {
+  display: flex;
+  flex-direction: row;
+  width: 80vw;
+  height: 70vh;
+}
+.gd_tableBox {
+  width: 30%;
+}
+.gd_rakeBox {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.gd_rake {
+  width: 100%;
+  background-color: gray;
+}
+.gd_sharkfish {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.gd_shark,
+.gd_fish {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*테이블 디자인*/
+.gd_tableBox {
+  max-height: 70vh; /* 테이블 높이 제한 */
+  overflow-y: auto; /* 수직 스크롤 활성화 */
+  margin: 0;
+}
+.gd_tableBox::-webkit-scrollbar {
+  display: none; /* 크롬, 사파리 등 웹킷 기반 브라우저에서 스크롤바 숨기기 */
+}
+.gd_table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+}
+
+.gd_table th,
+.gd_table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.gd_td {
+  color: white;
+}
+.positive {
+  color: #19a700; /* 형광 초록 */
+  font-weight: bold;
+}
+
+.negative {
+  color: #a90022; /* 형광 빨강 */
+  font-weight: bold;
+}
+
+.gd_table th {
+  background-color: #9f9f9f8c;
+  font-weight: bold;
+}

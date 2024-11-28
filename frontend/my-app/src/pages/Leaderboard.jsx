@@ -115,7 +115,14 @@ function Leaderboard() {
                           {user.username}
                         </Link>
                       </td>
-                      <td className="board_table_td">{user.totalProfit}</td>
+                      {/* 동적으로 클래스 적용 */}
+                      <td
+                        className={`board_table_td ${
+                          user.totalProfit >= 0 ? "positive" : "negative"
+                        }`}
+                      >
+                        {user.totalProfit}
+                      </td>
                       <td className="board_table_td">
                         {Math.round(user.winRate * 100)}%
                       </td>
