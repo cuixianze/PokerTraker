@@ -13,8 +13,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException ex){
         ErrorResponse error = new ErrorResponse("User Not Found",ex.getMessage());
-        System.out.println("여기");
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(GameNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleGameNotFoundException(GameNotFoundException ex){
+        ErrorResponse error = new ErrorResponse("Game Not Found", ex.getMessage());
+        return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
     }
 
 }

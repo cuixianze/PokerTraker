@@ -1,14 +1,14 @@
 package com.example.poker_traker.poker_traker.Service;
 
-import com.example.poker_traker.poker_traker.Entity.LeaderboardDTO;
-import com.example.poker_traker.poker_traker.Entity.Game;
-import com.example.poker_traker.poker_traker.Entity.GameSummaryDTO;
+import com.example.poker_traker.poker_traker.Entity.*;
 import com.example.poker_traker.poker_traker.Repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,10 +19,14 @@ import java.util.stream.Collectors;
 public class GameService {
 
     private final GameRepository gameRepository;
+    private final GamePlayerService gamePlayerService; // Game_Player 관리 서비스 추가
+    private final UserService userService; // User 관리 서비스 추가
 
     @Autowired
-    public GameService(GameRepository gameRepository) {
+    public GameService(GameRepository gameRepository, GamePlayerService gamePlayerService, UserService userService) {
         this.gameRepository = gameRepository;
+        this.gamePlayerService = gamePlayerService;
+        this.userService = userService;
     }
 
     public Game createGame(Game game) {
@@ -30,7 +34,7 @@ public class GameService {
     }
 
     public Page<GameSummaryDTO> getAllGameSummaries(Pageable pageable) {
-        Page<Game> games = gameRepository.findAll(pageable);
+        Page<Game> games = gameRepository.findAllByOrderByGameDateDesc(pageable);
 
         // Game 엔티티를 GameSummaryDTO로 변환
         return new PageImpl<>(
@@ -122,5 +126,35 @@ public class GameService {
         return gameRepository.findById(id);
     }
 
-    public void removeGameById(Long id){ gameRepository.deleteById(id);}
+    @Transactional
+    public void removeGameById(Long gameId) {
+        // 게임 데이터를 가져옵니다.
+        Game game = gameRepository.findById(gameId)
+                .orElseThrow(() -> new RuntimeException("Game not found"));
+
+        // 게임 플레이어 데이터를 가져옵니다.
+        List<Game_Player> gamePlayers = gamePlayerService.getGamePlayersByGameId(gameId);
+
+        // 각 플레이어의 기록을 업데이트합니다.
+        for (Game_Player gamePlayer : gamePlayers) {
+            User user = gamePlayer.getUser();
+            int profitLoss = gamePlayer.getProfitLoss();
+
+            // totalPnL 업데이트
+            user.setTotalPnL(user.getTotalPnL() - profitLoss);
+
+            // 승리/패배 게임 수 업데이트
+            if (profitLoss > 0) {
+                user.setWinningGames(user.getWinningGames() - 1);
+            } else {
+                user.setLosingGames(user.getLosingGames() - 1);
+            }
+
+            // 변경된 사용자 데이터를 저장합니다.
+            userService.updateUser(user);
+        }
+
+        // 게임 데이터를 삭제합니다.
+        gameRepository.deleteById(gameId);
+    }
 }

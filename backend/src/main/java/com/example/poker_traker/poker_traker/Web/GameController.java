@@ -2,7 +2,9 @@ package com.example.poker_traker.poker_traker.Web;
 
 
 import com.example.poker_traker.poker_traker.Entity.Game;
+import com.example.poker_traker.poker_traker.Entity.GamePlayerDTO;
 import com.example.poker_traker.poker_traker.Entity.Game_Player;
+import com.example.poker_traker.poker_traker.Exception.GameNotFoundException;
 import com.example.poker_traker.poker_traker.Service.GameService;
 import com.example.poker_traker.poker_traker.Service.GamePlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +35,15 @@ public class GameController {
     @GetMapping("/{id}")
     public ResponseEntity<Map<String, Object>> getGameDetails(@PathVariable Long id) {
         // Get the game details by ID
-        Game game = gameService.getGameById(id).orElseThrow(() -> new RuntimeException("Game not found"));
+        Game game = gameService.getGameById(id).orElseThrow(() -> new GameNotFoundException("Game not found"));
 
         // Get the list of players with their PnL for this game
-        List<Game_Player> playersPnL = gamePlayerService.getGamePlayersByGameId(id);
+        List<Game_Player> players = gamePlayerService.getGamePlayersByGameId(id);
+
+        // Convert Game_Player to GamePlayerDTO
+        List<GamePlayerDTO> playersPnL = players.stream()
+                .map(player -> new GamePlayerDTO(player.getUser().getUsername(), player.getProfitLoss()))
+                .toList();
 
         // Prepare the response data
         Map<String, Object> response = Map.of(
